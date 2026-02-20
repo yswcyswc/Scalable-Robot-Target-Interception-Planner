@@ -51,7 +51,10 @@ The images below show example executions.
 
 ### Map 1 and Map 2
 
-![Map 1 and Map 2](assets/map1.png)
+<p align="center">
+  <img src="assets/map1.png" width="48%" />
+  <img src="assets/map2.png" width="48%" />
+</p>
 
 **Description:**  
 These maps demonstrate interception in dense cost regions. The planner avoids high-cost areas and intercepts at a feasible future location instead of directly chasing the target’s instantaneous position.
@@ -60,7 +63,10 @@ These maps demonstrate interception in dense cost regions. The planner avoids hi
 
 ### Map 3 and Map 4
 
-![Map 3 and Map 4](assets/map3.png)
+<p align="center">
+  <img src="assets/map3.png" width="48%" />
+  <img src="assets/map4.png" width="48%" />
+</p>
 
 **Description:**  
 These maps highlight cost-aware behavior. Even when a geometrically shorter path exists, the planner chooses lower-cost routes and times interception using the earliest feasible target arrival.
@@ -69,7 +75,10 @@ These maps highlight cost-aware behavior. Even when a geometrically shorter path
 
 ### Map 5 and Map 6
 
-![Map 5 and Map 6](assets/map5.png)
+<p align="center">
+  <img src="assets/map5.png" width="48%" />
+  <img src="assets/map6.png" width="48%" />
+</p>
 
 **Description:**  
 These scenarios emphasize waiting behavior. The robot may arrive early at a low-cost interception cell and remain there rather than continue moving into higher-cost terrain.
@@ -78,19 +87,37 @@ These scenarios emphasize waiting behavior. The robot may arrive early at a low-
 
 ### Map 7 and Map 8
 
-![Map 7 and Map 8](assets/map7.png)
+<p align="center">
+  <img src="assets/map7.png" width="48%" />
+  <img src="assets/map8.png" width="48%" />
+</p>
 
 **Description:**  
 These maps show bounded-horizon behavior. The planner restricts exploration to the remaining target trajectory window and selects the minimum total-cost feasible interception.
 
 ---
 
-### Map 9 to Map 12
+### Map 9 and Map 10
 
-![Map 9 to Map 12](assets/map9.png)
+<p align="center">
+  <img src="assets/map9.png" width="48%" />
+  <img src="assets/map10.png" width="48%" />
+</p>
 
 **Description:**  
-These larger and more cluttered environments demonstrate robustness. The planner maintains feasibility, avoids obstacles, and still produces valid actions even when interception becomes difficult.
+These larger and more cluttered environments demonstrate robustness. The planner maintains feasibility, avoids obstacles, and selects interception points that balance cost and timing.
+
+---
+
+### Map 11 and Map 12
+
+<p align="center">
+  <img src="assets/map11.png" width="48%" />
+  <img src="assets/map12.png" width="48%" />
+</p>
+
+**Description:**  
+These maps stress-test the planner in obstacle-dense settings. Even when direct interception is constrained, the planner remains stable, cost-aware, and produces valid actions under dynamic conditions.
 
 ---
 
