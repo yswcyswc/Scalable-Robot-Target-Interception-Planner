@@ -4,8 +4,6 @@
 
 The goal of this project is to design a planner that intercepts a moving target in a weighted 2D grid while minimizing total accumulated traversal cost (movement + waiting), rather than minimizing arrival time. The target follows a fixed trajectory and disappears after its final timestep, which creates a shrinking time horizon constraint.
 
----
-
 ## Challenge 1: Interception Is Time-Dependent
 
 ### Why it was difficult
@@ -22,8 +20,6 @@ The target moves every timestep, so planning toward its current position leads t
 
 I precompute, for each grid cell, the earliest future timestep at which the target will occupy that cell. During search, a cell is only considered if the robot can reach it within that time window (`s <= k`). This converts interception into a bounded multi-goal search problem and prevents wasted exploration.
 
----
-
 ## Challenge 2: Modeling Waiting Correctly
 
 ### Why it was difficult
@@ -38,13 +34,8 @@ If the robot arrives early at an interception point, it must wait. Ignoring wait
 
 ### Chosen approach
 
-Waiting is modeled as remaining in place and paying that cell’s traversal cost per timestep. The total cost of interception is:
+Waiting is modeled as remaining in place and paying that cell’s traversal cost per timestep. The total cost of interception is: movement cost + waiting cost. This preserves the intended objective and ensures early arrival is only chosen when it is genuinely cost-effective.
 
-movement cost + waiting cost
-
-This preserves the intended objective and ensures early arrival is only chosen when it is genuinely cost-effective.
-
----
 
 ## Challenge 3: Efficiency and Stability
 
@@ -62,13 +53,9 @@ Large maps make repeated full replanning expensive. Additionally, naive replanni
 
 After computing an interception path, I cache the sequence of robot moves and reuse it if still valid and aligned with the current timestep. If invalid, I discard it and replan. The search is also bounded by the remaining target horizon and skips stale states to maintain efficiency.
 
----
-
 ## Fallback Strategy
 
 If no feasible interception exists within the remaining time window, the planner attempts to move toward the target’s current position using explored states. If that fails, it performs a safe greedy move that reduces distance while remaining valid. This guarantees the planner always outputs a legal action.
-
----
 
 ## Reflection
 

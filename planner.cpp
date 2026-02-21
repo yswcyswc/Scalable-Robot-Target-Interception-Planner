@@ -117,7 +117,9 @@ void planner(
             }
         }
 
-        g_plan.clear(); g_plan_pos = 0; g_plan_time = -1;
+        g_plan.clear(); 
+        g_plan_pos = 0; 
+        g_plan_time = -1;
     }
 
     const int remaining = (target_steps - 1) - curr_time;
